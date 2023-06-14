@@ -1,29 +1,37 @@
 import React, { useState, useEffect } from "react";
+import Table from "./components/table/table";
 
 function App() {
-  const [webPage, setWebPage] = useState(false);
-  const [seoInquiry, setSeoInquiry] = useState(false);
-  const [addCampaign, setAddCampaign] = useState(false);
+  const [services, setServices] = useState({
+    webPage: false,
+    seoInquiry: false,
+    addCampaign: false,
+  });
 
   const [totalPrice, setTotalPrice] = useState(0);
 
-  const handleCheckboxChange = (event) => {
-    const { name, checked } = event.target;
+  const [additionalServices, setAdditionalServices] = useState({
+    numPages: "",
+    numLang: "",
+  });
 
-    if (name === "webPage") {
-      setWebPage(checked);
-    } else if (name === "seoInquiry") {
-      setSeoInquiry(checked);
-    } else if (name === "addCampaign") {
-      setAddCampaign(checked);
-    }
+  const setCheckbox = (event) => {
+    const { id, checked } = event.target;
+    setServices((prevServices) => ({
+      ...prevServices,
+      [id]: checked,
+    }));
   };
 
   useEffect(() => {
+    const { webPage, seoInquiry, addCampaign } = services;
+    const { numPages, numLang } = additionalServices;
     let totalPrice = 0;
 
     if (webPage) {
       totalPrice += 500;
+      totalPrice +=
+        numPages !== "" && numLang !== "" ? numPages * numLang * 30 : 0;
     }
 
     if (seoInquiry) {
@@ -35,46 +43,16 @@ function App() {
     }
 
     setTotalPrice(totalPrice);
-  }, [webPage, seoInquiry, addCampaign]);
+  }, [services, additionalServices]);
 
   return (
-    <div>
-      <p>¿Qué quieres hacer?</p>
-      <div>
-        <label>
-          <input
-            type="checkbox"
-            name="webPage"
-            checked={webPage}
-            onChange={handleCheckboxChange}
-          />
-          Una página Web (500€)
-        </label>
-      </div>
-      <div>
-        <label>
-          <input
-            type="checkbox"
-            name="seoInquiry"
-            checked={seoInquiry}
-            onChange={handleCheckboxChange}
-          />
-          Una consulta SEO (300€)
-        </label>
-      </div>
-      <div>
-        <label>
-          <input
-            type="checkbox"
-            name="addCampaign"
-            checked={addCampaign}
-            onChange={handleCheckboxChange}
-          />{" "}
-          Una campaña de Google Adds (200€)
-        </label>
-      </div>
-      <p>Precio: {totalPrice}</p>
-    </div>
+    <Table
+      setCheckbox={setCheckbox}
+      services={services}
+      additionalServices={additionalServices}
+      setAdditionalServices={setAdditionalServices}
+      totalPrice={totalPrice}
+    />
   );
 }
 
