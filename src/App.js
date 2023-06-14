@@ -5,14 +5,14 @@ function App() {
   const [services, setServices] = useState({
     webPage: false,
     seoInquiry: false,
-    addCampaign: false,
+    adsCampaign: false,
   });
 
   const [totalPrice, setTotalPrice] = useState(0);
 
   const [additionalServices, setAdditionalServices] = useState({
-    numPages: "",
-    numLang: "",
+    numPages: 1,
+    numLang: 1,
   });
 
   const setCheckbox = (event) => {
@@ -24,7 +24,7 @@ function App() {
   };
 
   useEffect(() => {
-    const { webPage, seoInquiry, addCampaign } = services;
+    const { webPage, seoInquiry, adsCampaign } = services;
     const { numPages, numLang } = additionalServices;
     let totalPrice = 0;
 
@@ -38,7 +38,7 @@ function App() {
       totalPrice += 300;
     }
 
-    if (addCampaign) {
+    if (adsCampaign) {
       totalPrice += 200;
     }
 

@@ -1,10 +1,13 @@
+import React from "react";
 import { PanellWeb } from "../panell/panell";
 import { ContainerTable } from "./table-styled";
 
+
  const Table = ({setCheckbox, services, additionalServices, setAdditionalServices, totalPrice}) => {
 
-  const {webPage, seoInquiry, addCampaign} = services;
+  const {webPage, seoInquiry, adsCampaign} = services;
   const{numPages, numLang} = additionalServices;
+  
   
    return(<ContainerTable>
       <p> ¿Qué quieres hacer?</p>
@@ -38,7 +41,7 @@ import { ContainerTable } from "./table-styled";
             }
           />
         </div>
-      )}[]
+      )}
       <div>
         <label htmlFor="seoInquiry">
           <input
@@ -51,14 +54,14 @@ import { ContainerTable } from "./table-styled";
         </label>
       </div>
       <div>
-        <label htmlFor="addCampaign">
+        <label htmlFor="adsCampaign">
           <input
             type="checkbox"
-            id="addCampaign"
-            checked={addCampaign}
+            id="adsCampaign"
+            checked={adsCampaign}
             onChange={setCheckbox}
           />  
-           Una campaña de Google Adds (200€)
+           Una campaña de Google Ads (200€)
         </label>
       </div>
       <p>Precio: {totalPrice}</p>
