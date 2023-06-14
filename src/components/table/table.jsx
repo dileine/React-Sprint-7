@@ -38,7 +38,7 @@ import { ContainerTable } from "./table-styled";
             }
           />
         </div>
-      )}
+      )}[]
       <div>
         <label htmlFor="seoInquiry">
           <input
