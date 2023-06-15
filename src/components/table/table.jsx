@@ -3,11 +3,19 @@ import { PanellWeb } from "../panell/panell";
 import { ContainerTable } from "./table-styled";
 
 
- const Table = ({setCheckbox, services, additionalServices, setAdditionalServices, totalPrice}) => {
+
+ const Table = ({
+  setCheckbox, 
+  services, 
+  additionalServices, 
+  setAdditionalServices, 
+  totalPrice,
+}) => {
 
   const {webPage, seoInquiry, adsCampaign} = services;
   const{numPages, numLang} = additionalServices;
-  
+
+
   
    return(<ContainerTable>
       <p> ¿Qué quieres hacer?</p>

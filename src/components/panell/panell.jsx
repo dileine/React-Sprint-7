@@ -1,6 +1,6 @@
 import React from "react";
 import { ContainerPanell } from "./panell-styled";
-import  QuantityInputButton from "../buttons/quantityButton/quantityInputButton";
+import  QuantityInputButton from "../buttons/quantity/quantityInputButton";
 
 
 

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ContainerPanell = styled.div `
-width: 20%;
+width:30vw;
 margin: 10px;
 border:0.2rem solid black;
 border-radius: 0.8rem;
@@ -12,6 +12,8 @@ border-radius: 0.8rem;
    padding-top: 5px;
     margin: 10px;
 }
+
+
 
 
 `;

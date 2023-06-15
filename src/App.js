@@ -1,19 +1,24 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import Table from "./components/table/table";
+import { useLocalStorage } from "./components/useLocalStorage";
+import ResetButton from "./components/buttons/reset/resetButton";
 
 function App() {
-  const [services, setServices] = useState({
+  const [services, setServices] = useLocalStorage("services", {
     webPage: false,
     seoInquiry: false,
     adsCampaign: false,
   });
 
-  const [totalPrice, setTotalPrice] = useState(0);
+  const [totalPrice, setTotalPrice] = useLocalStorage("totalPrice", 0);
 
-  const [additionalServices, setAdditionalServices] = useState({
-    numPages: 1,
-    numLang: 1,
-  });
+  const [additionalServices, setAdditionalServices] = useLocalStorage(
+    "additionalServices",
+    {
+      numPages: 0,
+      numLang: 0,
+    }
+  );
 
   const setCheckbox = (event) => {
     const { id, checked } = event.target;
@@ -31,7 +36,7 @@ function App() {
     if (webPage) {
       totalPrice += 500;
       totalPrice +=
-        numPages !== "" && numLang !== "" ? numPages * numLang * 30 : 0;
+        numPages !== 0 && numLang !== 0 ? numPages * numLang * 30 : 0;
     }
 
     if (seoInquiry) {
@@ -43,16 +48,23 @@ function App() {
     }
 
     setTotalPrice(totalPrice);
-  }, [services, additionalServices]);
+  }, [services, additionalServices, setTotalPrice]);
 
   return (
-    <Table
-      setCheckbox={setCheckbox}
-      services={services}
-      additionalServices={additionalServices}
-      setAdditionalServices={setAdditionalServices}
-      totalPrice={totalPrice}
-    />
+    <div>
+      <Table
+        setCheckbox={setCheckbox}
+        services={services}
+        additionalServices={additionalServices}
+        setAdditionalServices={setAdditionalServices}
+        totalPrice={totalPrice}
+      />
+      <ResetButton
+        setServices={setServices}
+        setAdditionalServices={setAdditionalServices}
+        setTotalPrice={setTotalPrice}
+      />
+    </div>
   );
 }
 
