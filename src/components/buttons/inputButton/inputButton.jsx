@@ -1,5 +1,5 @@
 import React from "react";
-import { ContainerInput, QuantityButton, QuantityValue } from "./quantityInputButton-styled";
+import { ContainerInput, QuantityButton, QuantityValue } from "./inputButton-styled";
 
 const QuantityInputButton = ({value, onChange}) =>{
 

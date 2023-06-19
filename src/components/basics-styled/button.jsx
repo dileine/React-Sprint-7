@@ -1,10 +1,10 @@
 
 import styled from "styled-components";
 
-export const ContainerResetButton  = styled.button`
+export const Button  = styled.button`
 width: auto;
 margin: 0 10px;
-padding: 3px;
+padding: 5px;
 text-align: center;
 background-color: #FC7659;
 color: white;

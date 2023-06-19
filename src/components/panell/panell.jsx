@@ -1,10 +1,10 @@
 import React from "react";
 import { ContainerPanell } from "./panell-styled";
-import  QuantityInputButton from "../buttons/quantity/quantityInputButton";
+import  QuantityInputButton from "../buttons/inputButton/inputButton";
 
 
 
-export const PanellWeb = ({ numPages, numLang, setPages, setLang }) => {
+const PanellWeb = ({ numPages, numLang, setPages, setLang }) => {
 
 
   return (
@@ -20,3 +20,5 @@ export const PanellWeb = ({ numPages, numLang, setPages, setLang }) => {
     </ContainerPanell>
   );
 };
+
+export default PanellWeb;

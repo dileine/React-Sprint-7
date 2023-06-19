@@ -1,8 +1,6 @@
 import React from "react";
-import { PanellWeb } from "../panell/panell";
+import  PanellWeb  from "../panell/panell";
 import { ContainerTable } from "./table-styled";
-
-
 
  const Table = ({
   setCheckbox, 

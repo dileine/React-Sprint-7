@@ -1,5 +1,5 @@
 import React from "react";
-import { ContainerResetButton } from "./resetButton-styled";
+import { Button } from "../../basics-styled/button"
 
 export const ResetButton = ({
   setServices, 
@@ -14,9 +14,8 @@ export const ResetButton = ({
     setAdditionalServices({ numPages: 0, numLang: 0 });
   };
 
-  return(
-    <ContainerResetButton onClick={handleLocalStorageReset}>Reset Storage</ContainerResetButton>
-  );
+  return <Button onClick={handleLocalStorageReset}>Reset Storage</Button>
+
 
 };
 
